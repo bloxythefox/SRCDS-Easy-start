@@ -68,12 +68,18 @@ public class Main extends JFrame {
 	        button1.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	textField.setText((String) box.getSelectedItem());
-	            	System.out.println("");
-	            	
+	            	System.out.println(textField.getText());
+	            	ui.makeSelection(textField.getText());
 	            }
 	        });
-	        select=textField.getText();
+	        while (ui.getSelection()==null) {
+	        	
+	        }
+	        System.out.println(ui.getSelection());
+	        
 		}
+		
+		
 		else if (silent) {
 			String gm=null,gt=null,ws=null,name=null,mp=null,map=null,oargs=null;
 			for (int i=0;i<args.length;i++) {

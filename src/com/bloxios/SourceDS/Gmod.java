@@ -14,13 +14,21 @@ public class Gmod extends HL2DM {
 		this.workshop = WID;
 		this.gamem = gamemode;
 	}
+	public void startMe() {
+		if (super.getOptargs() != null) {
+			this.startServerWArgs();
+		}
+		else {
+			this.startServer();
+		}
+	}
 	@Override
-	//Starts a GARRY'S MOD server with the previously specified arguments, with no optional arguments.
+	//Starts a GARRY'S MOD server with the specified structured arguments with no optional arguments.
 	public void startServer() {
 		Start.openGmod(gamem,getName(),getMaxplayers(),getMap(),workshop);
 	}
 	@Override
-	//Starts a GARRY'S MOD server with the previously specified arguments, including optional arguments.
+	//Starts a GARRY'S MOD server with the specified structured arguments and optional arguments.
 	public void startServerWArgs() {
 		Start.openGmod(gamem,getName(),getMaxplayers(),getMap(),workshop,getOptargs());
 	}

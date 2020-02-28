@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 public class HL2DM {
 	private Logger logger;
 	private String maxplayers;
-	private String name,map,game,optargs,dir;
+	private String name,map,game,optargs=null,dir;
 	protected StartSRCDS Start;
 	
 	public HL2DM(Logger log, String dir, String n, String m, String max, String args) {
