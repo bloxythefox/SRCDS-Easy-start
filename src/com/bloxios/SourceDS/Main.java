@@ -124,7 +124,7 @@ public class Main extends JFrame {
 			}
 			else {
 				System.out.println("No valid game folder was specified, exiting with error code -4");
-				logger.info("No valid game folder was specified, exiting with error code -4");
+				logger.warning("No valid game folder was specified, exiting with error code -4");
 				System.exit(-4);
 			}
 			if (game.equals("HL2DM")) {
@@ -157,7 +157,9 @@ public class Main extends JFrame {
 			gmod.startServer();
 		}
 		else {
-			
+			System.out.println("Unknown error: Somehow couldn't find any server to start");
+			logger.warning("Unknown error: Somehow couldn't find any server to start. Check all arguments and try again.");
+			System.exit(-999);
 		}
 	}
 	
