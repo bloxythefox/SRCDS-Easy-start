@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 public class HL2DM {
 	private Logger logger;
 	private String maxplayers;
-	private String name,map,game,optargs=null,dir;
+	private String name,map,game,optargs;
 	protected StartSRCDS Start;
 	
 	public HL2DM(Logger log, String dir, String n, String m, String max, String args) {
@@ -18,12 +18,13 @@ public class HL2DM {
 	}
 	public HL2DM(Logger log, String dir, String n, String m, String max) {
 		this.logger=log;
-		this.dir=dir;
 		this.name = n;
 		this.map = m;
 		this.maxplayers = max;
+		this.optargs="";
 		this.Start = new StartSRCDS(logger,dir);
 	}
+	
 	//Getter for Max player count
 	public String getMax() {
 		return this.getMaxplayers();
@@ -32,12 +33,16 @@ public class HL2DM {
 	public String getName() {
 		return this.name;
 	}
-	//Starts a HALF-LIFE: 2 DEATH MATCH server with supplied structured arguments and no extra arguments
-	public void startServer() {
-		Start.openBasic("hl2mp",name,getMaxplayers(),getMap());
+	
+	public void setGame(String gt) {
+		this.game=gt;
 	}
-	//Starts a HALF-LIFE: 2 DEATH MATCH server with supplied structured arguments and extra arguments
-	public void startServerWArgs() {
+	public String getGame() {
+		return this.game;
+	}
+	
+	//Starts a HALF-LIFE: 2 DEATH MATCH server with supplied arguments.
+	public void startServer() {
 		Start.openBasic("hl2mp",name,getMaxplayers(),getMap(),getOptargs());
 	}
 	//Auto-generated stuff, too lazy to replace on my own.

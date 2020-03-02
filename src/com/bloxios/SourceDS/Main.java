@@ -45,12 +45,14 @@ public class Main extends JFrame {
 			e.printStackTrace();
 		}
 		for (int i=0;i<args.length;i++) {
-			if (args[i].equals("silent")) {
+			if (args[i].equals("silent;")) {
 				silent=true;
 				logger.info("Server will start automatically with supplied arguments.");
 			}
 			
 		}
+		HL2DM dm=null;
+		Gmod gmod=null;
 		if (!silent) {
 			JFrame j = new JFrame("Select Server type");
 			UISelect ui = new UISelect(logger, workingdir);
@@ -85,31 +87,31 @@ public class Main extends JFrame {
 			for (int i=0;i<args.length;i++) {
 				if (args[i].contains("gt:")) {
 					gametype= args[i].substring((args[i].indexOf(":")+1));
+					gt= args[i].substring((args[i].indexOf(":")+1));
 					logger.info("I now have the game folder name. I'll check for additional arguments once I discover which game this folder should contain.");
-					//logger.info("Gamemode argument detected. Server will start in \""+gametype+"\".");
 				}
 				else if (args[i].contains("gm:")) {
-					gm= args[i].substring((args[i].indexOf(":")+1));
+					gm= args[i].substring((args[i].indexOf(":")+1),args[i].indexOf(";"));
 					logger.info("Garry's mod gamemode set to \""+gm+"\".");
 				}
 				else if (args[i].contains("ws:")) {
-					ws= args[i].substring((args[i].indexOf(":")+1));
+					ws= args[i].substring((args[i].indexOf(":")+1),args[i].indexOf(";"));
 					logger.info("Garry's mod Workshop ID set to \""+ws+"\".");
 				}
 				else if (args[i].contains("nm:")) {
-					name= args[i].substring((args[i].indexOf(":")+1));
+					name= args[i].substring((args[i].indexOf(":")+1),args[i].indexOf(";"));
 					logger.info("Server name will be "+name+".");
 				}
 				else if (args[i].contains("mp:")) {
-					mp= args[i].substring((args[i].indexOf(":")+1));
+					mp= args[i].substring((args[i].indexOf(":")+1),args[i].indexOf(";"));
 					logger.info("Max players limit set to "+mp+".");
 					}
 				else if (args[i].contains("map:")) {
-					map= args[i].substring((args[i].indexOf(":")+1));
+					map= args[i].substring((args[i].indexOf(":")+1),args[i].indexOf(";"));
 					logger.info("Server will start on the map \""+map+"\".");
 					}
 				else if (args[i].contains("oargs:")) {
-					oargs= args[i].substring((args[i].indexOf(":")+1));
+					oargs= args[i].substring((args[i].indexOf(":")+1),args[i].indexOf(";"));
 					logger.info("The following argument(s) will be appended to the end of the run command: "+oargs);
 				}
 			}
@@ -126,29 +128,36 @@ public class Main extends JFrame {
 				System.exit(-4);
 			}
 			if (game.equals("HL2DM")) {
-				HL2DM dm;
 				if (name!=null&&mp!=null&&map!=null) {
 					if (oargs!=null) {
 						
 						dm = new HL2DM(logger,workingdir,name,map,mp,oargs);
 					}
 					else {
-						
+						dm = new HL2DM(logger,workingdir,name,map,mp);
 					}
 				}
 			}
 			else if (game.equals("GMod")) {
-				Gmod gmod;
 				if (gm!=null&&ws!=null&&name!=null&&mp!=null&&map!=null) {
 					if (oargs!=null) {
 						
-						gmod = new Gmod(logger,workingdir,name,map,mp,ws,gm,oargs);
+						gmod = new Gmod(logger,workingdir,name,map,mp,oargs,ws,gm);
 					}
 					else {
 						gmod = new Gmod(logger,workingdir,name,map,mp,ws,gm);
 					}
 				}
 			}
+		}
+		if (dm!=null) {
+			dm.startServer();
+		}
+		else if (gmod!=null) {
+			gmod.startServer();
+		}
+		else {
+			
 		}
 	}
 	
