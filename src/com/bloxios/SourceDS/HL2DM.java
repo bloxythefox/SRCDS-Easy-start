@@ -8,6 +8,7 @@ public class HL2DM {
 	private String name,map,game,optargs;
 	protected StartSRCDS Start;
 	
+	//Initializes with specified optional arguments
 	public HL2DM(Logger log, String dir, String n, String m, String max, String args) {
 		this.name = n;
 		this.map = m;
@@ -16,6 +17,7 @@ public class HL2DM {
 		this.logger = log;
 		this.Start = new StartSRCDS(logger,dir);
 	}
+	//Initializes with no optional arguments, which is always initialized as blank.
 	public HL2DM(Logger log, String dir, String n, String m, String max) {
 		this.logger=log;
 		this.name = n;

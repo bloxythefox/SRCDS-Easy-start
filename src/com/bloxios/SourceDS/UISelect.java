@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -15,12 +16,13 @@ public class UISelect extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String workingdir,selection;
+	private String workingdir,selection="";
 	private Logger logger;
 	private String[] linesArr;
 	public UISelect(Logger log, String work) {
 		this.logger = log;
 		this.workingdir = work;
+		logger.info("UI initialized");
 	}
 	public void UI() {
 		
@@ -30,6 +32,9 @@ public class UISelect extends JPanel{
 	}
 	public String getSelection() {
 		return selection;
+	}
+	public String getFromArray(int i) {
+		return linesArr[i];
 	}
 	public JComboBox<String> makeComboBox() {
 	//TODO: Add a UI for selecting server types from a file!
@@ -46,13 +51,12 @@ public class UISelect extends JPanel{
 	Path txtfile = Paths.get(workingdir, "servertypes.txt");
 	//Source https://stackoverflow.com/questions/12857242/java-create-string-array-from-text-file
     List<String> lines;
-    String[] servTypes;
 	try {
 		lines = Files.readAllLines(txtfile, Charset.forName("UTF-8"));
 	} catch (IOException e) {
 		e.printStackTrace();
 		lines=null;
-		logger.info("Error: Null was returned when attempting to read from the file. Does the file exist, and do we have permissions to use it?");
+		logger.log(Level.SEVERE, "Error: Null was returned when attempting to read from the file. Does the file exist, and do we have permissions to use it? Exception: ", e);
 		System.out.println("Exiting with Error code -2, external file failure ERR: "+e.getMessage());
 		System.exit(-2);
 	}

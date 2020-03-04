@@ -1,2 +1,2 @@
-typename(Garrys mod Template) gt:gmod; ws:ID; gm:sandbox; nm:Template Server; mp:8; map:gm_construct;
-typename(HL2DM Template) gt:hl2mp; nm:Template Server; mp:12; map:dm_overwatch;
+typename(Garrys mod Template); nm:GMod; gt:garrysmod; ws:ID; gm:sandbox; nm:Template Server; mp:8; map:gm_construct;
+typename(HL2DM Template); nm:HL2DM; gt:hl2mp; nm:Template Server; mp:12; map:dm_overwatch;
