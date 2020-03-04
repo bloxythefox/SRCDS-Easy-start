@@ -17,20 +17,20 @@ silent;
 Supports optional arguments for ALL games, not required to start silently or with the GUI.
 oargs:<extra arguments for SRCDS itself>;
 
-######Required arguments 
+###### Required arguments 
 (In no particular order)
 
 Game folder name: Where all the game content is stored (ex: hl2mp, garrysmod, tf2)
-gt:<FOLDER name>;
+gt:\<FOLDER name>;
 
 Server name itself; What will the server be called?
-nm:<name>;
+nm:\<name>;
 
 Max player count; How many players can connect at a time?
-mp:<number>;
+mp:\<number>;
 
 Name of map; What map shall the server start on?
-map:<name>;
+map:\<name>;
 
 ###### Garry's mod
 
@@ -38,9 +38,9 @@ These flags are required for Garry's Mod to start.
 Do not include them if you are starting any other game. (They'll just waste memory)
 
 Gamemode name; What gamemode will Garry's Mod start on?
-gm:<Gamemode FOLDER name>;
+gm:\<Gamemode FOLDER name>;
 (Ex: terrortown = ttt, sandbox = Sandbox)
 
 Workshop ID; the ID of the collection which Garry's Mod will download and start.
-ws:<ID, is a long number>;
+ws:\<ID, is a long number>;
 
