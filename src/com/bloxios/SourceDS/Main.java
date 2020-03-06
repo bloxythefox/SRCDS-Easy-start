@@ -81,6 +81,7 @@ public class Main extends JFrame {
 			JComboBox<String> box = ui.makeComboBox();
 			JButton button1 = new JButton("Start this");
 			JTextArea logArea = new JTextArea();
+			logArea.setText("When finished, press the close button on this window and then close the server to stop reloading.");
 		    JScrollPane logPane = new JScrollPane(logArea);
 			final JTextField textField = new JTextField("");
 	        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,10 +96,11 @@ public class Main extends JFrame {
 	            	textField.setText((String) box.getSelectedItem());
 	            	ui.makeSelection(textField.getText());
 	            	logger.info("Selected item: "+ui.getSelection());
-	            	j.getContentPane().add(logPane);
-	            	j.remove(box);
-	            	j.remove(button1);
 	            	button1.removeActionListener(box);
+	            	j.getContentPane().remove(box);
+	            	j.getContentPane().remove(button1);
+	            	j.getContentPane().add(logPane);
+	            	j.getContentPane().repaint();
 	            	final int select = (getSelNum(ui)-1);
 	            	final String[] argarray = ui.getFromArray(select).split(";");
 	            	final String[] fixedargs = (fixArr(argarray));
