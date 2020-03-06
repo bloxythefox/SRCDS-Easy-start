@@ -9,6 +9,7 @@ Starts a basic SRCDS instance with the arguments provided from the user. Can be 
 All arguments must be separated with a semi-colon after completed, but they do not have to be in any particular order.
 A complete argument, unless it has no sub-arguments, looks like ex:text;
 Currently, the only argument which does not need any text is silent;
+This program will automatically restart the server every time it closes. If you're using silent, then you'll need to manually shut down the JRE from task manager in order to completely shut down the server.
 
 ###### Startup arguments
 
@@ -17,7 +18,8 @@ This is required if you want to use the arguments below. This does not have to b
 silent;
 
 Supports optional arguments for ALL games, not required to start silently or with the GUI.
-oargs:<extra arguments for SRCDS itself>;
+oargs:\<extra arguments>;
+This is always appended to the end of the server, so its only intended for changing convars on a per-gamemode basis
 
 ###### Required arguments 
 (In no particular order)
@@ -45,4 +47,8 @@ gm:\<Gamemode FOLDER name>;
 
 Workshop ID; the ID of the collection which Garry's Mod will download and start.
 ws:\<ID, is a long number>;
+
+###### GUI Interface
+
+The GUI is powered by a single text file, servertypes.txt, which follows the same conventions as the command line flags. See the top lines for basic templates for each server type.
 
