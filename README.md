@@ -1,5 +1,7 @@
 # SRCDS-Easy-start
 A basic open-source Java application built for starting nearly any Source Engine game automatically, as a console.
+Please note, support for games other than HL2DM or Garry's Mod must be manually added to the source code.
+This is a Windows-based program.
 
 ###### Basic Premise
 
