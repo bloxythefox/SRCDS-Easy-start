@@ -1,0 +1,10 @@
+{
+	"comment1": "a basic represntation of how the file can be formatted. Variable names (not the comments, these can be removed) must be the same, but there is no specific order. Extra text or comments are fine and will be ignored (file name is not important, but must be in the /instances/ subdirectory located in the same folder as the jar.",
+	"comment2": "The name of the instance that will appear in the GUI. CANNOT be blank if using the GUI",
+	"InstanceName": "example gmod",
+	"comment3": "the exact name of the game folder for whatever source game you are running.",
+	"Game": "garrysmod",
+	"comment4": "all of the arguments that will be used at the launch of srcds. this should only be stuff like setting the max players or other console variables, the server starts up with the game folder specified above, and ALWAYS runs in -console mode with -nocrashdialogue enabled",
+	"srcdsArguments": "-maxplayers 8 +gamemode sandbox +map gm_construct +hostname \"Example Server\"",
+	"important comment": "if an argument requires to be put in quotation marks, you MUST use a single backslash like above to allow the string to still be parsed."
+}

@@ -1,0 +1,4 @@
+{
+	"comment1": "put the path to the folder that contains the executable and game files for whichever game(s) you're going to use. the name should be game_(game directory), like below. Another example could be Half-Life 2 death match being game_hl2mp",
+	"game_garrysmod": "X:/SteamCMD/steamapps/common/GarrysModDS"
+}

@@ -12,10 +12,9 @@ public class Gui {
         this.log = log;
     }
     public void startUI(String[] instances) {
-        //TODO: Implement GUI
         li = new JList<>(instances);
         createJGUI();
-        //Make the result a String array formatted like so: {game, arguments}
+        //TODO: Make the GUI resturn/call back with a String array formatted like so: game, arguments
     }
     //Source: https://stackoverflow.com/questions/6270354/how-to-open-warning-information-error-dialog-in-swing
 	public static void simpleErrorDialog(String text){

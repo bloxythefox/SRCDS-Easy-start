@@ -78,11 +78,18 @@ public class LoadServers {
 		Object jsonObj = parser.parse(reader);
 		JSONObject jsonObject = (JSONObject) jsonObj;
 		
-		String instanceName = (String) jsonObject.get("InstanceName");
-		String game = (String) jsonObject.get("Game");
-		String flags = (String) jsonObject.get("Flags");
+		String instanceName = (String) jsonObject.get("instanceName");
+		String game = (String) jsonObject.get("gameFolder");
+		String args = (String) jsonObject.get("srcdsArguments");
         reader.close();
-        return(new String[] {instanceName,game,flags});
+        try {
+        return(new String[] {instanceName,game,args});
+        }
+        catch (Exception e) {
+            log.exceptionLog("Failed to parse JSON file "+file.getName()+". Does this have all three variables? Follow the github example for more information.", e);
+            System.exit(-1);
+            return(null);
+        }
 	}
     public String[][] getInstances() {
         return ((String[][]) this.instances.toArray());

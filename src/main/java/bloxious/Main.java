@@ -48,7 +48,7 @@ public class Main
             syslog.infoLog("Starting in silent mode.");
             instance = servercfg.checkandParse(filetoRun);
             gamedir = config.findExecutable(instance[1]);
-            start.startServer(instance[1], gamedir, instance[2].trim().split("\\s+"));
+            start.startServer(instance[1], "'"+gamedir+"'", instance[2].trim().split("\\s+"));
         }
         else {
             gui = new Gui(syslog);

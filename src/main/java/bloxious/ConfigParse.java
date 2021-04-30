@@ -18,6 +18,8 @@ public class ConfigParse {
 			}
 			catch (Exception e) {
 				log.exceptionLog("Could not read from the config file. Exception:", e);
+				log.severeLog("Make sure you have a config.json file in the same directory as the jar. Download the Github example for a basic example.");
+				System.exit(-1);
 			}
 	}
 	public String findExecutable(String game) {
@@ -30,6 +32,10 @@ public class ConfigParse {
 		}
 		catch (Exception e) {
 			log.exceptionLog("Failed to find a valid game directory in the config file. Exception:", e);
+		}
+		if (gamedir == null) {
+			log.severeLog("Failed to find a valid game directory in the config file. Make sure you have specified a directory for game_"+game);
+			System.exit(-1);
 		}
 		return gamedir;
 	}
